@@ -9,3 +9,7 @@
 `Mappable Block` - LLVM IR Basicblock that we can see its instructions
 
 `Unmappable Block` - LLVM IR Basicblock that we can't see its instructions
+
+`Meta-tracing` - recording and compilation of the code is automatic.
+
+`Tracing` - manual code that records a trace and compiles it.
