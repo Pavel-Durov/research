@@ -81,3 +81,5 @@ Speedups are up to 2.18 when combined with the threaded code dispatch technique 
 - Is there a difference between "unfolding" and "outlining" instructions/functions?
 
 - What are the evaluation acronyms that stand for ECOOP'10, and DLS'10?
+
+- This paper was based on Python and dynamic runtimes (I guess it's common for interpreters). For statically typed languages am I right to assume that with statically typed languages, there's more place for optimisations since we have more information about the runtime through types?
