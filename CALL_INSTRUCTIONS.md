@@ -15,8 +15,6 @@ Indirect calls are calls to functions whose target is determined dynamically at 
 In meta-tracing, handling indirect calls is more challenging because the target of the call may not be known statically. 
 The tracing system needs to employ techniques to determine the possible targets of the call dynamically and handle them appropriately during tracing.
 
-
-
 ### setjjmp + longjump¦
 
 `setjmp` is a function in C that is used for implementing non-local jumps. 
