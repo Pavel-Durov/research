@@ -6,11 +6,11 @@ Source: https://publications.sba-research.org/publications/dls10.pdf
 
 This paper presents a collection of non-jit techniques that can be used to improve the efficiency of interpreters. All of the examples are based on Python 3.1.
 
-##  Optimisations
+## Optimisations
 
 ### Inlined comparison instructions
 
-General comparison instruction (COMPARE_OP) depends on its arguments to determine which comparison operation to execute at runtime. 
+General comparison instruction (COMPARE_OP) depends on its arguments to determine which comparison operation to execute at runtime.
 
 This dynamic overhead is reduced by creating type-specific and inlined comparison functions. In the paper, Figure 1 illustrates the original COMPARE_OP and INCA_CMP_LONG, Long type-specific, inlined instruction.
 
@@ -25,7 +25,7 @@ Their research analysis showed that the most frequent arguments for BUILD_TUPLE 
 
 ### Reduced instruction format
 
-The instructions format includes additional memory. This memory is used to cache function addresses or data objects.  
+The instructions format includes additional memory. This memory is used to cache function addresses or data objects.
 
 They found out that some of the Python instructions didn't use the preserved space at all and the proposed new instruction format where reserved space is removed. This optimisation reduces the size of instructions by half, but it means that we lose the cache optimisation therefore we need an alternative implementation.
 
@@ -39,8 +39,8 @@ Similar optimisation is done for LOAD_GLOBAL global values are inlined. The only
 ### Local variables caching
 
 LOAD instructions are frequently used in stack-based interpreters.
-LOAD_FAST instruction is used to load local variables. 
-This optimisation caches variables from the Python stack in the interpreter stack. 
+LOAD_FAST instruction is used to load local variables.
+This optimisation caches variables from the Python stack in the interpreter stack.
 
 The main idea is to allocate the most frequently executed LOAD instructions to the n available additional local caching variables.
 
@@ -51,7 +51,7 @@ In loops, we assume that LOAD and STORE instructions within the loop-body will b
 To give occurrences inside loops higher scores, the nesting level is multiplied by 100 whenever we enter a loop and divided by 100 whenever the loop is terminated.
 
 
-### Reducing Reference Counting 
+### Reducing Reference Counting
 
 With this optimisation, we remove redundant reference count increments, especially if they are decremented right after the increment.
 
@@ -66,7 +66,7 @@ One of the comparisons is the number of reference count operations - increment a
 
 The other measure is the relative speedup between different interpreter optimisations: Threaded Code, ECOOP'10 (inline caching only), and DLS'10 (not sure what DLS stands for).
 
-The evaluation shows that these optimisations were able to eliminate up to 2/3 of the increment and a 1/2 of the decrement instructions. 
+The evaluation shows that these optimisations were able to eliminate up to 2/3 of the increment and a 1/2 of the decrement instructions.
 
 Speedups are up to 2.18 when combined with the threaded code dispatch technique (Section 5.5).
 
@@ -81,7 +81,7 @@ Speedups are up to 2.18 when combined with the threaded code dispatch technique 
 - Is it common to include multiple optimisations in one paper? Maybe single optimisation will have a low impact but it would make it easier to understand in the evaluation.
 
 - Is threaded-code common optimisation in modern interpreters?
-  
+
 - What are the evaluation acronyms that stand for ECOOP'10, and DLS'10? (This is probably something that I can figure out from following the references)
 
 ## Notes
