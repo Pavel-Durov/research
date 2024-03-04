@@ -70,16 +70,20 @@ The evaluation shows that these optimisations were able to eliminate up to 2/3 o
 
 Speedups are up to 2.18 when combined with the threaded code dispatch technique (Section 5.5).
 
-## Notes
-
-- Mention of threaded-code optimization technique. Something I encountered for the first time in the last Journal reading group on 2024/03/01 = -https://arxiv.org/abs/2106.12496
-
 ## Questions
 
-- What's "manual unrolling"? "This manual unrolling of interpreter instructions enables the compiler to perform more optimizations on this block.". Section 3.2.
+- This paper was based on Python and dynamic runtimes (I guess its common for interpreters). For statically typed languages am I right to assume that with statically typed languages, there's more place for optimisations since we have more information about the runtime through types?
+
+- What's "manual unrolling"? "This manual unrolling of interpreter instructions enables the compiler to perform more optimisations on this block.". Section 3.2.
 
 - Is there a difference between "unfolding" and "outlining" instructions/functions?
 
-- What are the evaluation acronyms that stand for ECOOP'10, and DLS'10?
+- Is it common to include multiple optimisations in one paper? Maybe single optimisation will have a low impact but it would make it easier to understand in the evaluation.
 
-- This paper was based on Python and dynamic runtimes (I guess it's common for interpreters). For statically typed languages am I right to assume that with statically typed languages, there's more place for optimisations since we have more information about the runtime through types?
+- Is threaded-code common optimisation in modern interpreters?
+  
+- What are the evaluation acronyms that stand for ECOOP'10, and DLS'10? (This is probably something that I can figure out from following the references)
+
+## Notes
+
+- Mention of threaded-code optimization technique. Something I encountered for the first time in the last Journal reading group on 2024/03/01 = -https://arxiv.org/abs/2106.12496
