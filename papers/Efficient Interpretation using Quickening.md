@@ -6,6 +6,16 @@ Source: https://publications.sba-research.org/publications/dls10.pdf
 
 This paper presents a collection of non-jit techniques that can be used to improve the efficiency of interpreters. All of the examples are based on Python 3.1.
 
+This paper presents a collection of techniques that can be used to improve the efficiency of interpreters focusing on dynamic runtimes with examples and implementation in Python 3.1.
+
+Optimisations used: Unfolding instructions, Local variables caching, Reduced instruction memory, Unfolding instructions, Comparison instructions Inlining and Reduced Reference Count.
+
+The evaluation shows that with these optimisations up to 2/3 of the increment and 1/2 of the decrement instructions can be eliminated as well as a 2.18 speedup (additional speedup of 1.14 to the previous work).
+
+Some benchmarks are affected more by these optimisations than others, mandelbrot being the top one.
+
+For a few benchmarks, the speedup was actually reduced on PowerPC.
+
 ## Optimisations
 
 ### Inlined comparison instructions
