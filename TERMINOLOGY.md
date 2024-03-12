@@ -10,6 +10,10 @@
 
 `Unmappable Block` - LLVM IR Basicblock that we can't see its instructions
 
+`Trace` - A trace is simply a program path, which may cross function call boundaries.
+
+`Typed trace` - A trace annotated with a type for every variable (including temporaries) on the trace.
+
 `Meta-tracing` - recording and compilation of the code is automatic.
 
 `Tracing` - manual code that records a trace and compiles it.
