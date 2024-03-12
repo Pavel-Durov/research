@@ -9,3 +9,5 @@ Notes, drafts and progress related to my PhD research
 [Papers](./papers/PAPERS.md)
 
 [Call Instructions](./CALL_INSTRUCTIONS.md)
+
+[Experiments](./experiments/EXPERIMENTS.md)
