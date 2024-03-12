@@ -3,7 +3,10 @@
 ## Read
 
 - [How to Read a Computer Science Research Paper](https://people.cs.pitt.edu/~litman/courses/cs2710/papers/howtoreadacspaper.pdf)
-- [Efficient Interpretation using Quickening](./Efficient%20Interpretation%20using%20Quickening.md)
+
+- [Efficient Interpretation using Quickening](./Efficient_Interpretation_using_Quickening.md)
+
+- [Trace-based Just-in-Time Type Specialization for Dynamic Languages](./Efficient_Interpretation_using_Quickening.md)
 
 ## TODO
 
