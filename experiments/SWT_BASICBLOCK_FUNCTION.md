@@ -13,7 +13,6 @@ Example:
     yk_mt_hot_threshold_set(g->yk_mt, 9999999999);
 ```
 
-
 ## YK normal build
 
 ```shell
@@ -37,8 +36,6 @@ Benchmark 1: ./src/lua ./tests/closure.lua
   Time (mean ± σ):     268.5 ms ±   5.1 ms    [User: 372.5 ms, System: 35.5 ms]
   Range (min … max):   252.3 ms … 288.4 ms    50 runs
 ```
-
-
 
 ## YK noop build
 
