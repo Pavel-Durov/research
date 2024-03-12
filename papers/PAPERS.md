@@ -6,7 +6,7 @@
 
 - [Efficient Interpretation using Quickening](./Efficient_Interpretation_using_Quickening.md)
 
-- [Trace-based Just-in-Time Type Specialization for Dynamic Languages](./Efficient_Interpretation_using_Quickening.md)
+- [Trace-based Just-in-Time Type Specialization for Dynamic Languages](./Trace_based_Just_in_Time_Type_Specialization_for_Dynamic_Languages.md)
 
 ## TODO
 
