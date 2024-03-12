@@ -17,3 +17,5 @@
 `Meta-tracing` - recording and compilation of the code is automatic.
 
 `Tracing` - manual code that records a trace and compiles it.
+
+`Phi nodes` - A phi node is an instruction used to select a value depending on the predecessor of the current block.
