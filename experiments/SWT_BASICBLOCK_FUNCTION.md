@@ -75,3 +75,15 @@ Benchmark 1: ./src/lua ./tests/closure.lua
   Time (mean ± σ):      57.9 ms ±   3.6 ms    [User: 63.3 ms, System: 21.3 ms]
   Range (min … max):    43.5 ms …  64.2 ms    50 runs
 ```
+
+## YK no tracing-functions build
+
+Without inserting `yk_trace_basicblock` at all  (by removing the LLVM pass) we get:
+
+
+```shell
+Benchmark 1: ./src/lua ./tests/closure.lua
+  Time (mean ± σ):      40.8 ms ±   5.1 ms    [User: 32.1 ms, System: 19.6 ms]
+  Range (min … max):    23.9 ms …  48.8 ms    64 runs
+```
+Thats additional improvement of x6-10 from the normal YKLua+SWT
