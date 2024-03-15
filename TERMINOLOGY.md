@@ -19,3 +19,13 @@
 `Tracing` - manual code that records a trace and compiles it.
 
 `Phi nodes` - A phi node is an instruction used to select a value depending on the predecessor of the current block.
+
+`Side exit` - Refer to situations where the execution of the program being traced diverges from the expected trace due to conditions that cannot be efficiently predicted or handled by the tracing system i.e when guard fails.
+
+`Constant folding` - Optimisation technique. Instead of generating code to perform the computation at runtime, the JIT compiler calculates the result of the constant expression during compilation.
+
+`Static Single Assignment (SSA)` - Iintermediate representation used in compiler design where each variable is assigned only once, it simplifies the data flow analysis and enabling efficient optimizations.
+
+`Preemption`  - A strategy where a higher-priority task or process can interrupt a lower-priority task or process currently executing on a system resource (such as a CPU) before it completes its execution.
+
+x
