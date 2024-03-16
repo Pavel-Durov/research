@@ -144,7 +144,7 @@ $ r2 -w ./trace-clang++
 │           0x00001170      4883c410       add rsp, 0x10
 │           0x00001174      5d             pop rbp
 └           0x00001175      c3             ret
-[0x00001140]> wx C3 # override first instruction as routine return
+[0x00001140]> wx C3 # patch first instruction as routine return
 [0x00001140]> pdf
             ; CALL XREFS from main @ 0x11b5(x), 0x11c3(x), 0x11d0(x), 0x11de(x)
 ┌ 54: sym.yk_trace_basicblock (long int arg1, long int arg2);
@@ -177,6 +177,14 @@ main end
 
 Here we want to revert the patch we did before by patching back the original instruction.
 
+Bench of YKLua wihtout patch:
+```shell
+$ YKD_SERIALISE_COMPILATION=1 hyperfine -m 50 './src/lua ./tests/closure.lua'
+Benchmark 1: ./src/lua ./tests/closure.lua
+  Time (mean ± σ):     286.6 ms ±   4.8 ms    [User: 385.5 ms, System: 33.5 ms]
+  Range (min … max):   270.7 ms … 295.9 ms    50 runs
+```
+
 ```shell
 $ ./trace-clang++
 main start
@@ -184,7 +192,7 @@ main end
 $ r2 -w ./trace-clang++
 [0x00001050]> aaa
 [0x00001140]> s sym.yk_trace_basicblock
-[0x00001140]> pdf
+[0x00001140]>
             ;-- rip:
             ; CALL XREFS from main @ 0x11b5(x), 0x11c3(x), 0x11d0(x), 0x11de(x)
 ┌ 1: sym.yk_trace_basicblock ();
@@ -196,4 +204,57 @@ $ r2 -w ./trace-clang++
 
 ```
 
+## Patching ykcapi yk_trace_basicblock
 
+```shell
+$ YKB_TRACER=swt cargo build
+```
+
+```shell
+$ nm ./target/debug/libykcapi.so  | grep yk_trace
+00000000000e5b40 T yk_trace_basicblock
+
+$ r2 -w ./target/debug/libykcapi.so
+[0x000e4e80]> aaa
+[0x000e4e80]> s sym.yk_trace_basicblock
+[0x000e5b40]> pdf
+            ;-- yk_trace_basicblock:
+┌ 25: dbg.yk_trace_basicblock (int64_t arg1, int64_t arg2);
+│           ; arg int64_t arg1 @ rdi
+│           ; arg int64_t arg2 @ rsi
+│           ; var usize function_index @ rsp+0x8
+│           ; var usize block_index @ rsp+0x10
+│           0x000e5b40      4883ec18       sub rsp, 0x18               ; lib.rs:103 ; void yk_trace_basicblock(usize function_index,usize block_index);
+│           0x000e5b44      48897c2408     mov qword [function_index], rdi ; arg1
+│           0x000e5b49      4889742410     mov qword [block_index], rsi ; arg2
+│           0x000e5b4e      ff15cc752100   call qword [obj._ZN4ykrt16trace_basicblock17hd3aa19a08ccde3b2E_got] ; lib.rs:104 ; [0x2fd120:8]=0x1afd00 dbg.trace_basicblock
+│           0x000e5b54      4883c418       add rsp, 0x18               ; lib.rs:105
+└           0x000e5b58      c3             ret
+[0x000e5b40]> wx C3 # patch first instruction as routine return
+```
+
+```shell
+scp ./libykcapi.so  remote:/home/pd/yk-fork/target/debug/libykcapi.so
+```
+
+Benchmark:
+```shell
+YKD_SERIALISE_COMPILATION=1 hyperfine -m 50 './src/lua ./tests/closure.lua'
+Benchmark 1: ./src/lua ./tests/closure.lua
+  Time (mean ± σ):      55.7 ms ±   3.4 ms    [User: 62.8 ms, System: 19.7 ms]
+  Range (min … max):    45.6 ms …  66.2 ms    50 runs
+```
+
+Reversing the patch:
+```shell
+[0x000e5b40]> wa sub rsp, 0x18
+...
+```
+
+Benchmarks:
+```shell
+YKD_SERIALISE_COMPILATION=1 hyperfine -m 50 './src/lua ./tests/closure.lua'
+Benchmark 1: ./src/lua ./tests/closure.lua
+  Time (mean ± σ):     286.6 ms ±   4.2 ms    [User: 386.8 ms, System: 31.8 ms]
+  Range (min … max):   272.7 ms … 293.1 ms    50 runs
+```
