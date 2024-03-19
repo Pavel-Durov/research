@@ -28,4 +28,4 @@
 
 `Preemption`  - A strategy where a higher-priority task or process can interrupt a lower-priority task or process currently executing on a system resource (such as a CPU) before it completes its execution.
 
-x
+`Method-based JIT` - Compiler translate one method at a time to machine code.
