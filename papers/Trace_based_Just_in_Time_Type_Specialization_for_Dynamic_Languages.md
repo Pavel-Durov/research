@@ -34,3 +34,30 @@ In the evaluation, TraceMonkey achieves a speedup of x25 for integer-heavy bench
 
 - Trace stiching
 
+
+## Questions
+
+### What happened to TraceMonkey (i.e. why does Firefox now use SpiderMonkey)?
+
+TraceMonkey became part of SpiderMonkey in Firefox 3.5 and was later removed in Firefox version 11 in favour of JaegerMonkey.
+
+JaegerMonkey is a method JIT compiler, first released in Firefox 4.
+
+The downside of the TracingMonkey tracing-JIT approach is that it had to switch back and forth between the compiled machine code and the interpreter in some conditions (called "knocked off trace."). This transition happened more often than initially anticipated and had a significant performance impact.
+
+JaegerMonkey engine included:
+
+- JavaScript Method-JIT. This was expected to have a fast baseline JS performance compared to other engines which were also method-JIT based and to be consistent, as there is no need to transition between the machine code and the interpreter.
+
+- TaceMonkey tracing engine for inner loop compilation.
+
+Eventually, JaegerMonkey was replaced later on by IonMonkey.
+
+Sources:
+- https://hacks.mozilla.org/2010/03/improving-javascript-performance-with-jagermonkey/
+
+- https://wiki.mozilla.org/JaegerMonkey
+
+- https://wiki.mozilla.org/IonMonkey
+
+- https://en.wikipedia.org/wiki/SpiderMonkey
