@@ -234,12 +234,12 @@ $ r2 -w ./target/debug/libykcapi.so
 ```
 
 ```shell
-scp ./libykcapi.so  remote:/home/pd/yk-fork/target/debug/libykcapi.so
+$ scp ./libykcapi.so  remote:/home/pd/yk-fork/target/debug/libykcapi.so
 ```
 
 Benchmark:
 ```shell
-YKD_SERIALISE_COMPILATION=1 hyperfine -m 50 './src/lua ./tests/closure.lua'
+$ YKD_SERIALISE_COMPILATION=1 hyperfine -m 50 './src/lua ./tests/closure.lua'
 Benchmark 1: ./src/lua ./tests/closure.lua
   Time (mean ± σ):      55.7 ms ±   3.4 ms    [User: 62.8 ms, System: 19.7 ms]
   Range (min … max):    45.6 ms …  66.2 ms    50 runs
@@ -253,7 +253,7 @@ Reversing the patch:
 
 Benchmarks:
 ```shell
-YKD_SERIALISE_COMPILATION=1 hyperfine -m 50 './src/lua ./tests/closure.lua'
+$ YKD_SERIALISE_COMPILATION=1 hyperfine -m 50 './src/lua ./tests/closure.lua'
 Benchmark 1: ./src/lua ./tests/closure.lua
   Time (mean ± σ):     286.6 ms ±   4.2 ms    [User: 386.8 ms, System: 31.8 ms]
   Range (min … max):   272.7 ms … 293.1 ms    50 runs
