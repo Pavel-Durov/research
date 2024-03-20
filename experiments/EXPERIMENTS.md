@@ -6,4 +6,4 @@ This is a collection and documentation of experiments conducted.
 
 - [Binary Patching with R2](./BINARY_PATCHING_R2.md)
 
--
+- [Runtime Patching](./RUNTIME_PATCHING.md)
