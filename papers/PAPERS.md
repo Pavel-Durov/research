@@ -8,10 +8,8 @@
 
 - [Trace-based Just-in-Time Type Specialization for Dynamic Languages](./Trace_based_Just_in_Time_Type_Specialization_for_Dynamic_Languages.md)
 
+- [Really Automatic Scalable Object-Oriented Reengineering](./Really_Automatic_Scalable_Object-Oriented_Reengineering.md)
+
 ## TODO
-
-- http://www.cs.williams.edu/~freund/cs434-exemplar/gal-trace.pdf
-
-- http://se.inf.ethz.ch/people/trudel/papers/O-O-Reeng.pdf
 
 - https://arxiv.org/abs/2004.04500
